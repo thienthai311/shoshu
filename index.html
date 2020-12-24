@@ -16,9 +16,13 @@
             <div class="logo">
                 <a href="/"><h1>ShoShu</h1></a>
             </div>
-
+            <div class="bar mr-3" onclick="menuBar(this)">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
             <div class="main-menu">
-                <ul>
+                <ul class="bar-mb">
                     <li class="active">
                         <a href="index.html">Home</a>
                     </li>
@@ -95,6 +99,32 @@
         </div>
       </div>
     </div>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  function menuBar(x) {
+      x.classList.toggle("change");
+      mb=$('.main-menu').css('display');
+      if (mb =="none" || mb =="" || mb =="flex") {
+          $('.main-menu'). attr('style','display: block !important');
+      } else {
+          $('.main-menu'). attr('style','display: none !important');
+      } 
+  }
+function changeMenu() {
+    bar=$('.bar').css('display');
+    if (bar =="block") {
+        document.getElementsByClassName("bar")[0].classList.remove("change");
+        $('.main-menu'). attr('style','display: none !important');
+    } else {
+        $('.main-menu'). attr('style','display: block !important');
+    }
+}
+  $( document ).ready(function() {
+      changeMenu();
+      $(window).resize(function() {
+          changeMenu();
+      });
+  });     
+</script>
 </body>
 </html>
